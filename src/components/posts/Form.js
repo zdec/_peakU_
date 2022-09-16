@@ -27,7 +27,7 @@ import {
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 //Export Posts View Structure
-export default function ({ navigation }) {
+export default function ({ navigation, route }) {
 
 	const { isDarkmode } = useTheme();
 
@@ -86,6 +86,26 @@ export default function ({ navigation }) {
         })
     }
 
+	//Load Post Data
+	const getPostData = async (idPost) => {
+		let url = 'https://jsonplaceholder.typicode.com/posts/'+idPost
+        
+        await fetch(url)
+        .then(response => response.json())
+        .then(json => {
+			//Reset Form
+			setTitle(json.title)
+			setBody(json.body)
+        })
+	}
+
+	//Load Post by Update
+	useEffect(()=> {
+		let idPost = route.params.post.id
+		if(idPost !== undefined)
+			getPostData(idPost)
+	},[route.params.post.id])
+
 	return (
 	  <Layout>
 		{/* Posts View */}
@@ -106,6 +126,8 @@ export default function ({ navigation }) {
 							<Text style={styles.label}>Title</Text>
 							<TextInput
 								placeholder="Enter post title"
+								multiline={true}
+								minHeight={150}
 								value={title}
 								onChangeText={(val) => setTitle(val)}
 							/>
@@ -115,7 +137,7 @@ export default function ({ navigation }) {
 							<TextInput
 								placeholder="Enter post body"
 								multiline={true}
-								minHeight={450}
+								minHeight={350}
 								value={body}
 								onChangeText={(val) => setBody(val)}
 							/>

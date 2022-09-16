@@ -27,7 +27,7 @@ import {
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 //Export Users View Structure
-export default function ({ navigation }) {
+export default function ({ navigation, route }) {
 
 	const { isDarkmode } = useTheme();
 
@@ -93,7 +93,29 @@ export default function ({ navigation }) {
 			setWebsite('')
         })
     }
-	
+
+	//Load User Data
+	const getUserData = async (idUser) => {
+		let url = 'https://jsonplaceholder.typicode.com/users/'+idUser
+        
+        await fetch(url)
+        .then(response => response.json())
+        .then(json => {
+			//Reset Form
+			setUsername(json.username)
+			setName(json.name)
+			setEmail(json.email)
+			setPhone(json.phone)
+			setWebsite(json.website)
+        })
+	}
+
+	//Load User by Update
+	useEffect(()=> {
+		let idUser = route.params.user.id
+		if(idUser !== undefined)
+			getUserData(idUser)
+	},[route.params.user.id])
 
 	return (
 	  <Layout>

@@ -63,7 +63,7 @@ export default function ({ navigation }) {
 	//Update User Item
     const updateUser = (item) => {
 		hideMenu(item.id)
-        navigation.navigate("NewUsersScreen")
+        navigation.navigate("NewUsersScreen", {user: item})
     }
 
     //Activate Message Alert
@@ -86,7 +86,7 @@ export default function ({ navigation }) {
         .then(json => {
 			//Simulating Delete
             setallUsers(allUsers.filter(({id}) => id !== idUser))
-			
+
             //Set Loader
 			setActionProgress(false)
             setShowAlertSession(false)
@@ -159,7 +159,7 @@ export default function ({ navigation }) {
 			rightContent={
 				<Ionicons name="add-outline" size={20} color={isDarkmode ? themeColor.white200 : "#000000"} />
 			}
-			rightAction={() => navigation.navigate("NewUsersScreen")}
+			rightAction={() => navigation.navigate("NewUsersScreen", {user: {}})}
 			leftContent="New Users"
         	leftTextStyle={{width: 200}}
 		/>

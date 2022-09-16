@@ -63,7 +63,7 @@ export default function ({ navigation }) {
     //Update Post Item
     const updatePost = (item) => {
         hideMenu(item.id)
-        navigation.navigate("NewPostsScreen")
+        navigation.navigate("NewPostsScreen", {post: item})
     }
 
     //Activate Message Alert
@@ -86,7 +86,7 @@ export default function ({ navigation }) {
         .then(json => {
             //Simulating Delete
             setallPosts(allPosts.filter(({id}) => id !== idPost))
-            
+
             //Set Loader
 			setActionProgress(false)
             setShowAlertSession(false)
@@ -157,7 +157,7 @@ export default function ({ navigation }) {
 			rightContent={
 				<Ionicons name="add-outline" size={20} color={isDarkmode ? themeColor.white200 : "#000000"} />
 			}
-			rightAction={() => navigation.navigate("NewPostsScreen")}
+			rightAction={() => navigation.navigate("NewPostsScreen", {post: {}})}
 			leftContent="New Posts"
         	leftTextStyle={{width: 200}}
             style={styles.topNav}
