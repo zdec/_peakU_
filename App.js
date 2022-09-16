@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**********************************************************
+**************************APP JS***************************
+***********************************************************
+* @function: Archivo de inicio de la Aplicación Prueba PeakU
+* @appjs : Inicio Aplicación Expo & React Native
+* @author: Daniel Eduardo Ciro
+* @date: 16/09/2022
+**********************************************************
+**********************************************************/
+//Import React
+import React from "react";
 
-export default function App() {
+//Import AppNavigator
+import AppNavigator from "./src/navigation/AppNavigator";
+
+//Import Theme Ui
+import { ThemeProvider } from "react-native-rapi-ui";
+
+//Initial App
+export default function App(props) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+        <AppNavigator />
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
