@@ -10,18 +10,16 @@
 //Import React
 import React, { useState, useEffect } from 'react';
 //Import React Native
-import { View, Dimensions, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, ToastAndroid } from "react-native";
+import { View, Dimensions, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from "react-native";
 //Import Components Ui
 import {
 	Layout,
 	TopNav,
 	themeColor,
 	Text,
-	TextInput,
 	Section,
 	SectionContent,
-	useTheme,
-	Avatar
+	useTheme
 } from "react-native-rapi-ui";
 //Import Ion Icons
 import { Ionicons  } from "@expo/vector-icons";
@@ -202,7 +200,7 @@ export default function ({ navigation }) {
 								<ActivityIndicator color="#3366FF" size={40}/>
 							</View>
 							<View>
-								<Text style={{color: 'grey'}}>Cargando...</Text>
+								<Text style={{color: 'grey'}}>Loading...</Text>
 							</View>
 						</View>
 					):(
