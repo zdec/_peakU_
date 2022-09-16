@@ -9,7 +9,7 @@
 **********************************************************/
 
 //Import React
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 //Import Navigators
 import { NavigationContainer } from '@react-navigation/native';
@@ -157,6 +157,7 @@ const MainTabs = () => {
   );
 };
 
+//Export Tab Navigator
 export default () => {
 
 	return (
