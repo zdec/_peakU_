@@ -1,0 +1,46 @@
+{
+    "cli": {
+      "version": ">= 0.47.0"
+    },
+    "build": {
+      "prod": {
+        "node": "16.13.0",
+        "env": {
+          "API_URL": "https://company.com/api"
+        }
+      },
+      "development": {
+        "extends": "prod",
+        "developmentClient": true,
+        "distribution": "internal",
+        "env": {
+          "API_URL": "http://192.168.0.22:3000/"
+        }
+      },
+      "preview": {
+        "extends": "prod",
+        "distribution": "internal",
+        "env": {
+          "API_URL": "http://192.168.0.22:3000/"
+        }
+      },
+      "prod-apk": {
+        "developmentClient" : false,
+        "distribution": "store",
+        "releaseChannel" : "prod",
+        "env": {
+          "API_URL": "http://192.168.0.22:3000/"
+        },
+        "ios": {
+          "simulator": false
+        },
+        "android":{
+          "buildType": "apk"
+        }
+      }
+    },
+    "submit": {
+      "production": {}
+    }
+  }
+  
