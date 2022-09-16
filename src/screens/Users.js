@@ -84,9 +84,13 @@ export default function ({ navigation }) {
         })
         .then(response => response.json())
         .then(json => {
+			//Simulating Delete
+            setallUsers(allUsers.filter(({id}) => id !== idUser))
+			
             //Set Loader
 			setActionProgress(false)
             setShowAlertSession(false)
+			
         })
     }
 
